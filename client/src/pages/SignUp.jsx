@@ -12,7 +12,7 @@ function SignUp() {
   });
   const [errorMessage, setErrorMessage] = useState(null);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleUserData = (e) => {
     const value = e.target.value;
@@ -25,11 +25,12 @@ function SignUp() {
 
     axios
       .post(`${API_URL}/auth/signup`, userData)
-      // .then((response) => {
-      //   navigate("/login");
-      // })
+      .then((response) => {
+        navigate("/login");
+      })
       .catch((err) => {
-        const error = err.response.data.errorMessage;
+        console.log(err);
+        const error = err.response.data.message;
         setErrorMessage(error);
       });
   };
