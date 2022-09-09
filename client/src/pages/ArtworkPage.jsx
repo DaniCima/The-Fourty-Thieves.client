@@ -31,7 +31,7 @@ function ArtworkPage() {
         you. Listen to your intuition and the angels and follow their advice.💥
       </h4>
       {/* if is yours/ currentUser */}
-      <Link to={`/:artwork/edit`}>
+      <Link to={`gallery/edit/:artwork`}>
         <button>Edit Piece</button>
       </Link>
     </div>

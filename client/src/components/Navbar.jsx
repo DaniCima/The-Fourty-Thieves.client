@@ -7,7 +7,7 @@ function Navbar() {
         <button>Home</button>
       </Link>
       <Link to="/gallery">
-        <button>Gallery</button>
+        <button>General Gallery</button>
       </Link>
       {/* <button onClick={logOutUser}>Logout</button> */}
       <br />

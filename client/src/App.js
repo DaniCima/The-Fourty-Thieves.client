@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import GalleryPage from "./pages/GalleryPage";
 import LoginPage from "./pages/LoginPage";
 import ArtworkPage from "./pages/ArtworkPage";
+import EditArtwork from "./pages/EditArtwork";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -13,8 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="/artwork/:id" element={<ArtworkPage />} />
+        <Route path="/gallery/:artwork" element={<ArtworkPage />} />
+        <Route path="/gallery/edit/:artwork" element={<EditArtwork />} />
       </Routes>
     </div>
   );
