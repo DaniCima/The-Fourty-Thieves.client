@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import ArtworkPage from "./pages/ArtworkPage";
 import EditArtwork from "./pages/EditArtwork";
 import SignUp from "./pages/SignUp";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/gallery/:artwork" element={<ArtworkPage />} />
         <Route path="/gallery/edit/:artwork" element={<EditArtwork />} />

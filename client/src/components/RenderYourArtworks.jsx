@@ -1,11 +1,10 @@
-import React from "react";
 import ArtworkCard from "./ArtworkCard";
 
-function RenderYourArtworks({ projects }) {
+function RenderYourArtworks({ artwork }) {
   return (
     <>
-      {projects.map((project) => (
-        <ArtworkCard key={artwork.name} {...project} />
+      {artwork.map((creation) => (
+        <ArtworkCard key={artwork.title} {...creation} />
       ))}
     </>
   );

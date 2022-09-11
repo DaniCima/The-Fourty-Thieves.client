@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-
 import axios from "axios";
 
 const API_URL = "http://localhost:5006";
@@ -29,8 +28,8 @@ function LoginPage() {
       .post(`${API_URL}/auth/login`, userData)
       .then((response) => {
         storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/profile");
+        authenticateUser(response.data.authToken);
+        navigate("/");
       })
       .catch((err) => {
         const error = err.response.data.message;

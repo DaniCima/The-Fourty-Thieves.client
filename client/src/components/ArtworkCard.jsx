@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-function ArtworkCard() {
+function ArtworkCard({ title, description }) {
   return (
     <div>
-      <Link to={`/gallery/:artwork`}>
-        <h3>title</h3>
+      <Link to={`/gallery/${title}`}>
+        <h3>{title}</h3>
       </Link>
-      <p style={{ maxWidth: "400px" }}>description </p>
+      <p style={{ maxWidth: "400px" }}>{description} </p>
     </div>
   );
 }

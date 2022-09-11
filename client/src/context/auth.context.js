@@ -42,6 +42,7 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
+          console.log(error);
         });
     } else {
       // If the token is not available (or is removed)
@@ -52,13 +53,10 @@ function AuthProviderWrapper(props) {
   };
 
   const removeToken = () => {
-    // <== ADD
-    // Upon logout, remove the token from the localStorage
     localStorage.removeItem("authToken");
   };
 
   const logOutUser = () => {
-    // <== ADD
     // To log out the user, remove the token
     removeToken();
     // and update the state variables
@@ -66,9 +64,9 @@ function AuthProviderWrapper(props) {
   };
 
   useEffect(() => {
-    //  <==  ADD
     authenticateUser();
   }, []);
+
   return (
     <AuthContext.Provider
       value={{
