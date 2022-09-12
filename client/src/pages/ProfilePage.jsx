@@ -7,19 +7,19 @@ import RenderYourArtworks from "../components/RenderYourArtworks";
 const API_URL = "http://localhost:5006";
 
 function ProfilePage() {
-  const [artwork, setArtwork] = useState([]);
+  const [artwork3, setArtwork3] = useState([]);
   const { user } = useContext(AuthContext);
 
-  const getAllCreations = () => {
+  const getYourCreations = () => {
     const storedToken = localStorage.getItem("authToken");
 
     // Send the token through the request "Authorization" Headers
     axios
       // maybe it has to be redirected to gallery/:artwork ???
-      .get(`${API_URL}/artwork`, {
+      .get(`${API_URL}/gallery/:username`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => setArtwork(response.data))
+      .then((response) => setArtwork3(response.data.slice(-3)))
       .catch((error) => console.log(error));
   };
 
@@ -29,15 +29,17 @@ function ProfilePage() {
     if (!user) {
       return null;
     } else {
-      getAllCreations();
+      getYourCreations();
     }
-  }, [artwork]);
+  }, []);
 
   return (
     <>
-      <AddArtwork refreshArtworks={getAllCreations} />
+      <h2> {user.username}</h2>
 
-      <RenderYourArtworks artwork={artwork} />
+      <AddArtwork refreshArtworks={getYourCreations} />
+
+      <RenderYourArtworks artwork={artwork3} />
     </>
   );
 }

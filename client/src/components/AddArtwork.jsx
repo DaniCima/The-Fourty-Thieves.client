@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
 
 const API_URL = "http://localhost:5006";
 
 function AddArtwork(props) {
+  const { user } = useContext(AuthContext);
   const [artworkData, setArtworkData] = useState({
     title: "",
     description: "",
+    owner: "",
     // imageUrl: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
@@ -23,7 +27,7 @@ function AddArtwork(props) {
 
     axios
       .post(
-        `${API_URL}/artwork`,
+        `${API_URL}/gallery`,
         artworkData,
         { headers: { Authorization: `Bearer ${storedToken}` } } // Send the token through the request "Authorization" Headers
       )
@@ -37,6 +41,12 @@ function AddArtwork(props) {
         setErrorMessage(error);
       });
   };
+
+  useEffect(() => {
+    if (user) {
+      setArtworkData({ ...artworkData, owner: user.username });
+    }
+  }, []);
 
   return (
     <div>
