@@ -20,6 +20,8 @@ function ArtworkPage() {
       .catch((err) => console.log(err));
   };
 
+  // FIND THE OWNER
+
   useEffect(() => {
     getArtwork();
     console.log(artwork);
@@ -37,9 +39,7 @@ function ArtworkPage() {
       <h4>{artwork.description}</h4>
       <p>
         By:
-        <Link to={`${artwork.owner}`}>
-          <button>{artwork.owner}</button>
-        </Link>
+        <Link to={`../gallery/${artwork.owner}`}>{artwork.owner}</Link>
       </p>
       {/* if is yours/ currentUser */}
       <Link to={`../gallery/artwork/edit/${artworkId}`}>

@@ -16,7 +16,7 @@ function ProfilePage() {
     // Send the token through the request "Authorization" Headers
     axios
       // maybe it has to be redirected to gallery/:artwork ???
-      .get(`${API_URL}/gallery/:username`, {
+      .get(`${API_URL}/gallery/${user.username}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setArtwork3(response.data.slice(-3)))
