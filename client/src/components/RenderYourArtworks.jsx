@@ -4,7 +4,7 @@ function RenderYourArtworks({ artwork }) {
   return (
     <>
       {artwork.map((creation) => (
-        <ArtworkCard key={artwork._id} {...creation} />
+        <ArtworkCard key={creation._id} {...creation} />
       ))}
     </>
   );

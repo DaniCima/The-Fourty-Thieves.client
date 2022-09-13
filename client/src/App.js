@@ -37,9 +37,9 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/gallery" element={<GeneralGalleryPage />} />
         <Route path="/gallery/:username" element={<GalleryPage />} />
-        <Route path="/gallery/artwork/:id" element={<ArtworkPage />} />
+        <Route path="/gallery/artwork/:artworkId" element={<ArtworkPage />} />
         <Route
-          path="/gallery/artwork/edit/:id"
+          path="/gallery/artwork/edit/:artworkId"
           element={
             <IsPrivate>
               <EditArtwork />

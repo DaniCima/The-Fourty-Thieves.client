@@ -9,7 +9,9 @@ function GeneralGalleryPage() {
   const getRandomCreations = () => {
     axios
       .get(`${API_URL}/gallery`)
-      .then((response) => setArtwork(response.data))
+      .then((response) =>
+        setArtwork(response.data.sort((a, b) => 0.5 - Math.random()))
+      )
       .catch((error) => console.log(error));
   };
 

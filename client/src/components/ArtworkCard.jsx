@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ArtworkCard({ title, description, _id, owner }) {
+function ArtworkCard({ title, description, _id, owner, imageUrl }) {
   return (
     <div>
       <Link to={`/gallery/artwork/${_id}`}>
@@ -8,6 +8,7 @@ function ArtworkCard({ title, description, _id, owner }) {
         <h4>By: {owner}</h4>
       </Link>
       <p style={{ maxWidth: "400px" }}>{description} </p>
+      <img src={imageUrl} alt="master-piece" width="200" />
     </div>
   );
 }

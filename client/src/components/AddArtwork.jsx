@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
+import { uploadImage } from "../service";
 
 const API_URL = "http://localhost:5006";
 
@@ -11,13 +12,21 @@ function AddArtwork(props) {
     title: "",
     description: "",
     owner: "",
-    // imageUrl: "",
+    imageUrl: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
-  const handleArtworkData = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    setArtworkData({ ...artworkData, [name]: value });
+
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    uploadImage(uploadData)
+      .then((response) => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setArtworkData({ ...artworkData, imageUrl: response.fileUrl });
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
   const handleSubmit = (e) => {
@@ -42,6 +51,12 @@ function AddArtwork(props) {
       });
   };
 
+  const handleArtworkData = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setArtworkData({ ...artworkData, [name]: value });
+  };
+
   useEffect(() => {
     if (user) {
       setArtworkData({ ...artworkData, owner: [user._id] });
@@ -60,6 +75,8 @@ function AddArtwork(props) {
           value={artworkData.title}
           onChange={handleArtworkData}
         />
+
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
 
         <label>Description:</label>
         <textarea

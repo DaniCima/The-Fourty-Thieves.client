@@ -24,7 +24,7 @@ function GalleryPage() {
   };
 
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     // if (user) {
     getCreations();
     // }
