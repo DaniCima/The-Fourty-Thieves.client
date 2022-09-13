@@ -12,7 +12,7 @@ function SignUp() {
     artist: false,
     discipline: "",
     autodefinition: "",
-    collaborators: "",
+    collaborators: [],
     link: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
@@ -50,7 +50,7 @@ function SignUp() {
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSubmit}>
-        <label>Email:</label>
+        <label>*Email:</label>
         <input
           type="email"
           name="email"
@@ -59,7 +59,7 @@ function SignUp() {
         />
         <br />
 
-        <label>Password:</label>
+        <label>*Password:</label>
         <input
           type="password"
           name="password"
@@ -68,7 +68,7 @@ function SignUp() {
         />
         <br />
 
-        <label>Unique username:</label>
+        <label>*Unique username:</label>
         <input
           type="text"
           name="username"
@@ -119,7 +119,7 @@ function SignUp() {
             <label>Collaborators:</label>
             <input
               type="text"
-              name="username"
+              name="collaborators"
               value={userData.collaborators}
               onChange={handleUserData}
             />
@@ -138,6 +138,8 @@ function SignUp() {
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      <p>( * Required Fields )</p>
 
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
