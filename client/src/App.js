@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import ProfilePage from "./pages/ProfilePage";
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
+import GeneralGalleryPage from "./pages/GeneralGalleryPage";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
           }
         />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/gallery" element={<GeneralGalleryPage />} />
         <Route path="/gallery/:username" element={<GalleryPage />} />
         <Route path="/gallery/artwork/:id" element={<ArtworkPage />} />
         <Route

@@ -44,7 +44,7 @@ function AddArtwork(props) {
 
   useEffect(() => {
     if (user) {
-      setArtworkData({ ...artworkData, owner: user.username });
+      setArtworkData({ ...artworkData, owner: [user._id] });
     }
   }, []);
 

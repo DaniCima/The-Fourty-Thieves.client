@@ -16,7 +16,7 @@ function GalleryPage() {
     // Send the token through the request "Authorization" Headers
     axios
       // maybe it has to be redirected to gallery/:artwork ???
-      .get(`${API_URL}/gallery/:username`, {
+      .get(`${API_URL}/gallery/${user.username}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setArtwork(response.data))
@@ -24,14 +24,19 @@ function GalleryPage() {
   };
 
   useEffect(() => {
-    if (user) {
-      getCreations();
-    }
+    console.log(user);
+    // if (user) {
+    getCreations();
+    // }
   }, []);
+
+  if (!user) {
+    return <p>Loading..</p>;
+  }
 
   return (
     <div>
-      <p>Gallery</p>
+      <p> {user && user.username}'s Gallery</p>
       {/* if is YOUR gallery/ :currentUser */}
       <AddArtwork refreshArtworks={getCreations} />
       {/* public */}

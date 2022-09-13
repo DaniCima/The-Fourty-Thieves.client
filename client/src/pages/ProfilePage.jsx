@@ -37,7 +37,7 @@ function ProfilePage() {
     <>
       <h2> {user.username}</h2>
 
-      <AddArtwork refreshArtworks={getYourCreations} />
+      <AddArtwork refreshArtworks={getYourCreations} userId={user._id} />
 
       <RenderYourArtworks artwork={artwork3} />
     </>
