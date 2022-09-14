@@ -14,6 +14,7 @@ function AddArtwork(props) {
     description: "",
     owner: "",
     imageUrl: "",
+    link: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -84,6 +85,14 @@ function AddArtwork(props) {
           type="text"
           name="description"
           value={artworkData.description}
+          onChange={handleArtworkData}
+        />
+
+        <label>Link:</label>
+        <textarea
+          type="text"
+          name="link"
+          value={artworkData.link}
           onChange={handleArtworkData}
         />
 
