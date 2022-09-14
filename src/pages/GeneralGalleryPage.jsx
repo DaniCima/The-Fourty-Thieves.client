@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import RenderYourArtworks from "../components/RenderYourArtworks";
-const API_URL =
-  process.env.REACT_APP_API_URL || "https://angry-teal-rattlesnake.cyclic.app/";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function GeneralGalleryPage() {
   const [artwork, setArtwork] = useState([]);

@@ -4,8 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import { uploadImage } from "../service";
 
-const API_URL =
-  process.env.REACT_APP_API_URL || "https://angry-teal-rattlesnake.cyclic.app/";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function AddArtwork(props) {
   const { user } = useContext(AuthContext);

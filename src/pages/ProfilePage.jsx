@@ -4,8 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import AddArtwork from "../components/AddArtwork";
 import RenderYourArtworks from "../components/RenderYourArtworks";
 
-const API_URL =
-  process.env.REACT_APP_API_URL || "https://angry-teal-rattlesnake.cyclic.app/";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function ProfilePage() {
   const [artwork3, setArtwork3] = useState([]);

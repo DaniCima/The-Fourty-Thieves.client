@@ -3,8 +3,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 
-const API_URL =
-  process.env.REACT_APP_API_URL || "https://angry-teal-rattlesnake.cyclic.app/";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function LoginPage() {
   const [userData, setUserData] = useState({
@@ -33,8 +32,8 @@ function LoginPage() {
         navigate("/");
       })
       .catch((err) => {
-        const error = err.response.data.message;
-        setErrorMessage(error);
+        // setErrorMessage(err);
+        console.log(err);
       });
   };
   return (
