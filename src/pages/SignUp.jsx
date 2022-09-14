@@ -2,7 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5006";
+const API_URL =
+  process.env.REACT_APP_API_URL || "https://angry-teal-rattlesnake.cyclic.app/";
 
 function SignUp() {
   const [userData, setUserData] = useState({

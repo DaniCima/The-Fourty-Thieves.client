@@ -3,7 +3,8 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 
-const API_URL = "http://localhost:5006";
+const API_URL =
+  process.env.REACT_APP_API_URL || "https://angry-teal-rattlesnake.cyclic.app/";
 
 function LoginPage() {
   const [userData, setUserData] = useState({

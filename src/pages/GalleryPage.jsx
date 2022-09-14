@@ -4,7 +4,8 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = "http://localhost:5006";
+const API_URL =
+  process.env.REACT_APP_API_URL || "https://angry-teal-rattlesnake.cyclic.app/";
 
 function GalleryPage() {
   const [artwork, setArtwork] = useState([]);
