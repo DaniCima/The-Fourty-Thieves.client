@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -38,9 +40,37 @@ function LoginPage() {
   };
   return (
     <>
-      <h1>Login</h1>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={userData.email}
+            onChange={handleUserData}
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
 
-      <form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={userData.password}
+            onChange={handleUserData}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Log In
+        </Button>
+      </Form>
+
+      {/* <form onSubmit={handleSubmit}>
         <label>Email:</label>
         <input
           type="email"
@@ -60,11 +90,12 @@ function LoginPage() {
         <br />
 
         <button type="submit">Login</button>
-      </form>
+      </form> */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <Button href={"/signup"}>Sign Up</Button>
+      {/* <Link to={"/signup"}> Sign Up</Link> */}
     </>
   );
 }

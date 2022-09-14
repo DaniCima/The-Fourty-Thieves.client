@@ -66,39 +66,41 @@ function AddArtwork(props) {
 
   return (
     <div>
-      <h3>New Work</h3>
+      <div className="conteiner">
+        <h3>New Work</h3>
 
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={artworkData.title}
-          onChange={handleArtworkData}
-        />
+        <form onSubmit={handleSubmit}>
+          <label>Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={artworkData.title}
+            onChange={handleArtworkData}
+          />
 
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
+          <input type="file" onChange={(e) => handleFileUpload(e)} />
 
-        <label>Description:</label>
-        <textarea
-          type="text"
-          name="description"
-          value={artworkData.description}
-          onChange={handleArtworkData}
-        />
+          <label>Description:</label>
+          <textarea
+            type="text"
+            name="description"
+            value={artworkData.description}
+            onChange={handleArtworkData}
+          />
 
-        <label>Link:</label>
-        <textarea
-          type="text"
-          name="link"
-          value={artworkData.link}
-          onChange={handleArtworkData}
-        />
+          <label>Link:</label>
+          <textarea
+            type="text"
+            name="link"
+            value={artworkData.link}
+            onChange={handleArtworkData}
+          />
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Submit</button>
+        </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </div>
     </div>
   );
 }

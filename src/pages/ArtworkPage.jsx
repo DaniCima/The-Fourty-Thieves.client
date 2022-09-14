@@ -6,6 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 function ArtworkPage() {
   const [artwork, setArtwork] = useState({});
   const { artworkId } = useParams();
+  const [owner, setOwner] = useState("");
 
   const getArtwork = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -15,7 +16,9 @@ function ArtworkPage() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
+        console.log(response.data);
         setArtwork(response.data);
+        setOwner(response.data.owner[0].username);
       })
       .catch((err) => console.log(err));
   };
@@ -31,20 +34,16 @@ function ArtworkPage() {
     <div>
       <p>add to favs || make offert</p>
       <img src={artwork.imageUrl} alt="future-img" />
-      <h1>
-        {artwork.title} <br />
-        <button>OFFERT</button>
-        <button>FAVS</button>
-      </h1>
+      <h1>{artwork.title}</h1>
       <h4>{artwork.description}</h4>
-      <p>
-        By:
-        <Link to={`../gallery/${artwork.owner}`}>{artwork.owner}</Link>
-      </p>
-      {/* if is yours/ currentUser */}
-      <Link to={`../gallery/artwork/edit/${artworkId}`}>
+      <p>By: </p>
+
+      <Link to={`/gallery/${owner}`}>{owner}</Link>
+
+      {/* if is yours/ currentUser
+      {/* <Link to={`/gallery/artwork/edit/${artworkId}`}>
         <button>Edit Piece</button>
-      </Link>
+      </Link>  */}
     </div>
   );
 }
