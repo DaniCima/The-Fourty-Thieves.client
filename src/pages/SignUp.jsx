@@ -15,8 +15,8 @@ function SignUp() {
     artist: false,
     discipline: "",
     autodefinition: "",
-    collaborators: [],
-    link: "",
+    // collaborators: [],
+    // link: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
 

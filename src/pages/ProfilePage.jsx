@@ -36,7 +36,7 @@ function ProfilePage() {
   }, []);
 
   if (!user) {
-    return <Navigate to="/" />;
+    return <p>Loading.. </p>;
   }
   return (
     <>

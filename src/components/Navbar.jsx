@@ -19,7 +19,7 @@ function NavbarFunc() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/gallery">Gallery</Nav.Link>
-              <NavDropdown title="Yours" id="basic-nav-dropdown">
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 {user.artist && (
                   <NavDropdown.Item href={`/gallery/${user.username}`}>
                     Your Gallery
