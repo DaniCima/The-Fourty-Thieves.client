@@ -13,7 +13,7 @@ function AddArtwork(props) {
     description: "",
     owner: "",
     imageUrl: "",
-    link: "",
+    // link: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -67,7 +67,7 @@ function AddArtwork(props) {
   return (
     <div>
       <div className="conteiner">
-        <h3>New Work</h3>
+        <h5>Add New Work</h5>
 
         <form onSubmit={handleSubmit}>
           <label>Title:</label>
@@ -88,13 +88,13 @@ function AddArtwork(props) {
             onChange={handleArtworkData}
           />
 
-          <label>Link:</label>
+          {/* <label>Link:</label>
           <textarea
             type="text"
             name="link"
             value={artworkData.link}
             onChange={handleArtworkData}
-          />
+          /> */}
 
           <button type="submit">Submit</button>
         </form>

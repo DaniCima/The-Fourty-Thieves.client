@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
@@ -70,32 +70,10 @@ function LoginPage() {
         </Button>
       </Form>
 
-      {/* <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={userData.email}
-          onChange={handleUserData}
-        />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={userData.password}
-          onChange={handleUserData}
-        />
-
-        <br />
-
-        <button type="submit">Login</button>
-      </form> */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
       <Button href={"/signup"}>Sign Up</Button>
-      {/* <Link to={"/signup"}> Sign Up</Link> */}
     </>
   );
 }

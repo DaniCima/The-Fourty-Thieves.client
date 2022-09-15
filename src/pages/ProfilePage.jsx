@@ -16,28 +16,36 @@ function ProfilePage() {
     // Send the token through the request "Authorization" Headers
     axios
       // maybe it has to be redirected to gallery/:artwork ???
-      .get(`${API_URL}/gallery/${user.username}`, {
+      .get(`${API_URL}/gallery/profile`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => setArtwork3(response.data.slice(-3)))
+      .then((response) => {
+        console.log(response.data);
+        setArtwork3(response.data.slice(-3));
+      })
       .catch((error) => console.log(error));
   };
 
   // We set this effect will run only once, after the initial render
   // by setting the empty dependency array - []
   useEffect(() => {
-    if (!user) {
-      return null;
-    } else {
-      getYourCreations();
-    }
+    // if (user) {
+    getYourCreations();
+    // }
   }, []);
 
+  if (!user) {
+    return <p>Loading.. </p>;
+  }
   return (
     <>
-      <h2> {user.username}</h2>
+      <h2> {user && user.username}</h2>
 
-      <AddArtwork refreshArtworks={getYourCreations} userId={user._id} />
+      <p>{user && user.autodefinition}</p>
+
+      <p>{user && user.discipline}</p>
+
+      <AddArtwork refreshArtworks={getYourCreations} />
 
       <RenderYourArtworks artwork={artwork3} />
     </>

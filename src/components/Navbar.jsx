@@ -1,45 +1,60 @@
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Button from "react-bootstrap/Button";
 
-function Navbar() {
+function NavbarFunc() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/gallery">
-        <button>General Gallery</button>
-      </Link>
+    <Navbar bg="light" expand="lg">
       {user && (
-        <>
-          <span>Welcome {user.username}</span>
-          <br />
-          <Link to="/profile">
-            <button>Your Profile</button>
-          </Link>
-          <Link to={`/gallery/${user.username}`}>
-            <button>Your Gallery</button>
-          </Link>
-
-          <button onClick={logOutUser}>Logout</button>
-        </>
+        <Container>
+          <Navbar.Brand href="/">Fourty Thieves</Navbar.Brand>
+          <Navbar.Brand>{user.username}</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/gallery">Gallery</Nav.Link>
+              <Nav.Link href={`/gallery/${user.username}`}>
+                Your Gallery
+              </Nav.Link>
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href={`/gallery/${user.username}`}>
+                  Your Gallery
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/profile">
+                  Your Profile
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Button variant="outline-success" onClick={logOutUser}>
+              Logout
+            </Button>
+          </Navbar.Collapse>
+        </Container>
       )}
       {!isLoggedIn && (
-        <>
-          <Link to="/">
-            <button>Home</button>
-          </Link>
-
-          <Link to="/login">
-            <button>Log In</button>
-          </Link>
-          <Link to="/signup">
-            <button>Sign Up</button>
-          </Link>
-        </>
+        <Container>
+          <Navbar.Brand href="/">Fourty Thieves</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/gallery">General Gallery</Nav.Link>
+              <NavDropdown title="Login" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
       )}
-    </nav>
+    </Navbar>
   );
 }
 
-export default Navbar;
+export default NavbarFunc;

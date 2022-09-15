@@ -11,11 +11,12 @@ import ProfilePage from "./pages/ProfilePage";
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
 import GeneralGalleryPage from "./pages/GeneralGalleryPage";
+import NavbarFunc from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <NavbarFunc />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route

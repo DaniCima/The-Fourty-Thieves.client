@@ -129,7 +129,7 @@ function SignUp() {
               onChange={handleUserData}
             />
             <br />
-            <label>Collaborators:</label>
+            {/* <label>Collaborators:</label>
             <input
               type="text"
               name="collaborators"
@@ -144,7 +144,7 @@ function SignUp() {
               value={userData.link}
               onChange={handleUserData}
             />
-            <br />
+            <br /> */}
           </>
         )}
         <button type="submit">Sign Up</button>
