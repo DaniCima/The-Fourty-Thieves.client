@@ -19,13 +19,12 @@ function NavbarFunc() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/gallery">Gallery</Nav.Link>
-              <Nav.Link href={`/gallery/${user.username}`}>
-                Your Gallery
-              </Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href={`/gallery/${user.username}`}>
-                  Your Gallery
-                </NavDropdown.Item>
+              <NavDropdown title="Yours" id="basic-nav-dropdown">
+                {user.artist && (
+                  <NavDropdown.Item href={`/gallery/${user.username}`}>
+                    Your Gallery
+                  </NavDropdown.Item>
+                )}
                 <NavDropdown.Item href="/profile">
                   Your Profile
                 </NavDropdown.Item>

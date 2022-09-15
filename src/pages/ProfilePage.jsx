@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import AddArtwork from "../components/AddArtwork";
 import RenderYourArtworks from "../components/RenderYourArtworks";
+import { Navigate } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -35,7 +36,7 @@ function ProfilePage() {
   }, []);
 
   if (!user) {
-    return <p>Loading.. </p>;
+    return <Navigate to="/" />;
   }
   return (
     <>
@@ -45,7 +46,7 @@ function ProfilePage() {
 
       <p>{user && user.discipline}</p>
 
-      <AddArtwork refreshArtworks={getYourCreations} />
+      {user.artist && <AddArtwork refreshArtworks={getYourCreations} />}
 
       <RenderYourArtworks artwork={artwork3} />
     </>
