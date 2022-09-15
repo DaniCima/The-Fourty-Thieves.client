@@ -37,7 +37,7 @@ function GalleryPage() {
 
   return (
     <div>
-      <p> {user && user.username}'s Gallery</p>
+      <p> {user && username}'s Gallery</p>
       {/* if is YOUR gallery/ :currentUser */}
       <AddArtwork refreshArtworks={getCreations} />
       {/* public */}

@@ -38,6 +38,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/gallery" element={<GeneralGalleryPage />} />
         <Route path="/gallery/:username" element={<GalleryPage />} />
+        <Route path="/gallery/creator/:username" element={<GalleryPage />} />
         <Route path="/gallery/artwork/:artworkId" element={<ArtworkPage />} />
         <Route
           path="/gallery/artwork/edit/:artworkId"
