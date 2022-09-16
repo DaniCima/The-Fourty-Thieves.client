@@ -44,7 +44,7 @@ function NavbarFunc() {
             <Nav className="me-auto">
               <Nav.Link href="/gallery">General Gallery</Nav.Link>
               <NavDropdown title="Login" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                <NavDropdown.Item href="login">Login</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item>
               </NavDropdown>
