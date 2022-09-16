@@ -39,11 +39,11 @@ function ProfilePage() {
   }
   return (
     <>
-      <h2> {user && user.username}</h2>
+      <h1> {user && user.username}</h1>
 
-      <p>{user && user.autodefinition}</p>
+      <h4>{user && user.autodefinition}</h4>
 
-      <p>{user && user.discipline}</p>
+      <h5>{user && user.discipline}</h5>
 
       {user.artist && <AddArtwork refreshArtworks={getYourCreations} />}
 
