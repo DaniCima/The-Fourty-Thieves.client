@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Navbar from "./components/Navbar";
 import GalleryPage from "./pages/GalleryPage";
 import LoginPage from "./pages/LoginPage";
 import ArtworkPage from "./pages/ArtworkPage";
@@ -19,14 +18,7 @@ function App() {
       <NavbarFunc />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route
-          path="/login"
-          element={
-            <IsAnon>
-              <LoginPage />
-            </IsAnon>
-          }
-        />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/signup"
           element={
