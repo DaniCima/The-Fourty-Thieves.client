@@ -3,6 +3,11 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import { uploadImage } from "../service";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -65,43 +70,89 @@ function AddArtwork(props) {
   }, []);
 
   return (
-    <div>
-      <div className="conteiner">
-        <h5>Add New Work</h5>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+          <Form.Label column sm="2">
+            Add New Work
+          </Form.Label>
+          <Col sm="10">
+            <Form.Control plaintext readOnly defaultValue="" />
+          </Col>
+        </Form.Group>
 
-        <form onSubmit={handleSubmit}>
-          <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={artworkData.title}
-            onChange={handleArtworkData}
-          />
+        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+          <Form.Label column sm="2">
+            Title:
+          </Form.Label>
+          <Col sm="10">
+            <Form.Control
+              type="text"
+              name="title"
+              value={artworkData.title}
+              onChange={handleArtworkData}
+              placeholder="Name it"
+            />
+          </Col>
+        </Form.Group>
 
-          <input type="file" onChange={(e) => handleFileUpload(e)} />
+        <Form.Group controlId="formFileSm" className="mb-3">
+          {/* <Form.Label>Default file input example</Form.Label> */}
+          <Form.Control type="file" onChange={(e) => handleFileUpload(e)} />
+        </Form.Group>
 
-          <label>Description:</label>
-          <textarea
-            type="text"
-            name="description"
-            value={artworkData.description}
-            onChange={handleArtworkData}
-          />
-
-          {/* <label>Link:</label>
-          <textarea
-            type="text"
-            name="link"
-            value={artworkData.link}
-            onChange={handleArtworkData}
-          /> */}
-
-          <button type="submit">Submit</button>
-        </form>
-
+        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+          <Form.Label column sm="2">
+            Description:
+          </Form.Label>
+          <Col sm="10">
+            <Form.Control
+              type="text"
+              name="description"
+              value={artworkData.description}
+              onChange={handleArtworkData}
+              placeholder="Tell what you whant to tell"
+            />
+          </Col>
+        </Form.Group>
+        <Button variant="outline-dark" type="submit">
+          Post
+        </Button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </div>
-    </div>
+      </Form>
+    </Container>
+    // <div className="conteiner">
+    //   <h5>Add New Work</h5>
+
+    //   <form onSubmit={handleSubmit}>
+    //     <label>Title:</label>
+    //     <input
+    //       type="text"
+    //       name="title"
+    //       value={artworkData.title}
+    //       onChange={handleArtworkData}
+    //     />
+
+    //     <input type="file" onChange={(e) => handleFileUpload(e)} />
+
+    //     <label>Description:</label>
+    //     <textarea
+    //       type="text"
+    //       name="description"
+    //       value={artworkData.description}
+    //       onChange={handleArtworkData}
+    //     />
+
+    //     {/* <label>Link:</label>
+    //     <textarea
+    //       type="text"
+    //       name="link"
+    //       value={artworkData.link}
+    //       onChange={handleArtworkData}
+    //     /> */}
+
+    //     <button type="submit">Submit</button>
+    //   </form>
   );
 }
 

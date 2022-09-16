@@ -3,7 +3,6 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import AddArtwork from "../components/AddArtwork";
 import RenderYourArtworks from "../components/RenderYourArtworks";
-import { Navigate } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_URL;
 

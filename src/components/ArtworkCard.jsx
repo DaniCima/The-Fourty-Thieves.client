@@ -9,13 +9,15 @@ function ArtworkCard({ title, description, _id, imageUrl, ownerc }) {
       <Card.Img variant="top" src={imageUrl} />
       <Card.Body>
         <Card.Title>
-          <Link to={`/gallery/artwork/${_id}`}>{title}</Link>
+          <Link id="the-owner" to={`/gallery/artwork/${_id}`}>
+            {title}
+          </Link>
         </Card.Title>
         <Card.Text>{description}</Card.Text>
-
+        {/* 
         <ListGroup className="list-group-flush">
           <ListGroup.Item>By: {ownerc}</ListGroup.Item>
-        </ListGroup>
+        </ListGroup> */}
       </Card.Body>
     </Card>
   );

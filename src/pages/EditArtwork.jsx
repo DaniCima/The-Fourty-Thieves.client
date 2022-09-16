@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -53,30 +58,78 @@ function EditArtwork() {
   };
 
   return (
-    <div className="EditProjectPage">
-      <h3>Edit the Project</h3>
+    // <div className="EditProjectPage">
+    //   <h3>Edit the Project</h3>
 
-      <form onSubmit={handleFormSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+    //   <form onSubmit={handleFormSubmit}>
+    //     <label>Title:</label>
+    //     <input
+    //       type="text"
+    //       name="title"
+    //       value={title}
+    //       onChange={(e) => setTitle(e.target.value)}
+    //     />
 
-        <label>Description:</label>
-        <textarea
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+    //     <label>Description:</label>
+    //     <textarea
+    //       name="description"
+    //       value={description}
+    //       onChange={(e) => setDescription(e.target.value)}
+    //     />
 
-        <button type="submit">Update Project</button>
-      </form>
+    //     <button type="submit">Update Project</button>
+    //   </form>
 
-      <button onClick={deleteArtwork}>Delete</button>
-    </div>
+    //   <button onClick={deleteArtwork}>Delete</button>
+    <Container>
+      <Form onSubmit={handleFormSubmit}>
+        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+          <Form.Label column sm="2">
+            Edit Work
+          </Form.Label>
+          <Col sm="10">
+            <Form.Control plaintext readOnly defaultValue="" />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+          <Form.Label column sm="2">
+            Title:
+          </Form.Label>
+          <Col sm="10">
+            <Form.Control
+              type="text"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Name it"
+            />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+          <Form.Label column sm="2">
+            Description:
+          </Form.Label>
+          <Col sm="10">
+            <Form.Control
+              type="text"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Tell what you whant to tell"
+            />
+          </Col>
+        </Form.Group>
+        <Button variant="outline-dark" type="submit">
+          Update data
+        </Button>
+      </Form>
+      <Button variant="outline-dark" onClick={deleteArtwork}>
+        Delete
+      </Button>
+    </Container>
+    // </div>
   );
 }
 

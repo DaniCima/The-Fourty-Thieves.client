@@ -10,7 +10,7 @@ body {
 }
 
 #cardd {
-  background-color: darkseagreen;
+  background-color: rgb(60, 173, 173);
   width: 300px;
   margin: 20px;
 }
@@ -23,4 +23,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+#the-owner {
+  text-decoration: none;
+  color: white;
 }

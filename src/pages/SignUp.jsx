@@ -4,6 +4,7 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -49,7 +50,7 @@ function SignUp() {
   };
 
   return (
-    <div className="SignupPage">
+    <Container>
       <h3>Sign Up</h3>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -101,7 +102,26 @@ function SignUp() {
 
         {userData.artist && (
           <>
-            <label>"Discipline":</label>
+            <Form.Select
+              aria-label="Default select example"
+              name="discipline"
+              value={userData.discipline}
+              onChange={handleUserData}
+            >
+              <option value="Music">Music</option>
+              <option value="Painting">Painting</option>
+              <option value="Muralism">Muralism</option>
+              <option value="Dance">Dance</option>
+              <option value="Magic">Magic</option>
+              <option value="Fimls and Photography">
+                Fimls and Photography
+              </option>
+              <option value="Juggle and Balance">Juggle and Balance</option>
+              <option value="Poems and Writtings">Poems and Writtings</option>
+              <option value="Handmade Objects">Handmade Objects</option>
+              <option value="Sculptures">Sculptures</option>
+            </Form.Select>
+            {/* <label>"Discipline":</label>
             <select
               name="discipline"
               value={userData.discipline}
@@ -120,15 +140,25 @@ function SignUp() {
               <option value="Handmade Objects">Handmade Objects</option>
               <option value="Sculptures">Sculptures</option>
             </select>
-            <br />
-            <label>Auto-definition:</label>
+            <br /> */}
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Auto-definition:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="autodefinition"
+                name="autodefinition"
+                value={userData.autodefinition}
+                onChange={handleUserData}
+              />
+            </Form.Group>
+            {/* <label>Auto-definition:</label>
             <input
               type="text"
               name="autodefinition"
               value={userData.autodefinition}
               onChange={handleUserData}
             />
-            <br />
+            <br /> */}
             {/* <label>Collaborators:</label>
             <input
               type="text"
@@ -147,80 +177,12 @@ function SignUp() {
             <br /> */}
           </>
         )}
-        <button type="submit">Sign Up</button>
 
-        <Button variant="primary" type="submit">
+        <Button variant="outline-dark" type="submit">
           Sign Up
         </Button>
       </Form>
-
-      {/* <form onSubmit={handleSubmit}>
-        <label>*Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={userData.email}
-          onChange={handleUserData}
-        />
-        <br />
-
-        <label>*Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={userData.password}
-          onChange={handleUserData}
-        />
-        <br />
-
-        <label>*Unique username:</label>
-        <input
-          type="text"
-          name="username"
-          value={userData.username}
-          onChange={handleUserData}
-        />
-        <br /> */}
       {/* 
-        <label>Need your own gallery? | Artist mode</label> */}
-      {/* <input
-          type="checkbox"
-          name="artist"
-          checked={userData.artist}
-          onChange={handleUserData}
-        /> */}
-      {/* <br /> */}
-
-      {/* {userData.artist && (
-          <>
-            <label>"Discipline":</label>
-            <select
-              name="discipline"
-              value={userData.discipline}
-              onChange={handleUserData}
-            >
-              <option value="Music">Music</option>
-              <option value="Painting">Painting</option>
-              <option value="Muralism">Muralism</option>
-              <option value="Dance">Dance</option>
-              <option value="Magic">Magic</option>
-              <option value="Fimls and Photography">
-                Fimls and Photography
-              </option>
-              <option value="Juggle and Balance">Juggle and Balance</option>
-              <option value="Poems and Writtings">Poems and Writtings</option>
-              <option value="Handmade Objects">Handmade Objects</option>
-              <option value="Sculptures">Sculptures</option>
-            </select>
-            <br />
-            <label>Auto-definition:</label>
-            <input
-              type="text"
-              name="autodefinition"
-              value={userData.autodefinition}
-              onChange={handleUserData}
-            />
-            <br />
             <label>Collaborators:</label>
             <input
               type="text"
@@ -240,7 +202,7 @@ function SignUp() {
           </>
         )}
         <button type="submit">Sign Up</button>
-      </form> */}
+      </form>  */}
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
@@ -248,7 +210,7 @@ function SignUp() {
 
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
-    </div>
+    </Container>
   );
 }
 

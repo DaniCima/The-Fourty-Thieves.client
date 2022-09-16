@@ -4,6 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -40,40 +41,44 @@ function LoginPage() {
   };
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            name="email"
-            value={userData.email}
-            onChange={handleUserData}
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              value={userData.email}
+              onChange={handleUserData}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={userData.password}
-            onChange={handleUserData}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Log In
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={userData.password}
+              onChange={handleUserData}
+            />
+          </Form.Group>
+          <Button variant="outline-dark" type="submit">
+            Log In
+          </Button>
+        </Form>
+
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+        <p>Don't have an account yet?</p>
+        <Button variant="outline-dark" href={"/signup"}>
+          Sign Up
         </Button>
-      </Form>
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Button href={"/signup"}>Sign Up</Button>
+      </Container>
     </>
   );
 }
